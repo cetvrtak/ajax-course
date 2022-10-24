@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube API</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 62.5%;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      h1 {
+        color: cadetblue;
+        margin: 3.6rem 1.8rem;
+        font-size: 3.6rem;
+      }
+      .search-container {
+        margin: 0.8rem 1.8rem;
+      }
+      .output {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+        gap: 1rem;
+      }
+      h1 {
+        grid-column: 1 / -1;
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 2px 5px #666;
+      }
+      .box:link,
+      .box:visited {
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 9px;
+        text-decoration: none;
+        color: rgb(48, 48, 48);
+        transition: all 0.3s;
+        width: 100%;
+      }
+      .box:hover,
+      .box:active {
+        color: cadetblue;
+        box-shadow: 0 4px 5px #666;
+      }
+      .box p {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+        max-width: 320px;
+      }
+
+      @media screen and (max-width: 767px) {
+        .output {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>YouTube JSON data</h1>
+    <div class="search-container">
+      <input type="text" class="searchBox" />
+      <button class="btn">Search YouTube</button>
+    </div>
+    <div class="output"></div>
+    <script src="script.js"></script>
+  </body>
+</html>

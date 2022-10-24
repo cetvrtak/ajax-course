@@ -1,3 +1,11 @@
 ### Section 1
 
 - Create .json file
+
+### [SKIPPED] Section 2 & 3
+
+- Multiple projects practicing fetching JSON data and displaying in the DOM
+
+### Section 4
+
+- YouTube API
