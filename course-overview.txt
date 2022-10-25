@@ -13,3 +13,4 @@
 ### Section 5
 
 - Practice using POST and PUT method requests to server
+- Constructing new FormData from myForm

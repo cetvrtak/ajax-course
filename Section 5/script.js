@@ -1,113 +1,79 @@
-// https://reqres.in/api/users?page=2
-const baseUrl = "https://reqres.in/api/";
 const btn = document.querySelector(".btn");
-const inputEl = document.querySelector("input");
+const inpEle = document.querySelector("input");
 const output = document.querySelector(".output");
 
-const app = {
-  pg: 1,
-};
+const myForm = document.createElement("form");
+document.body.append(myForm);
 
-btn.addEventListener("click", loadData);
+const output1 = document.createElement("div");
+output1.classList.add("main");
+const baseUrl =
+  "https://script.google.com/macros/s/AKfycbzUcUVn99AkTK1rxxjCd-oU_707N3s23p9OriMaMzCYunuacydj/exec";
+inpEle.classList.add("box");
+inpEle.setAttribute("name", "nameOG");
+inpEle.value = "Hello World";
+myForm.append(inpEle);
+for (let i = 0; i < 10; i++) {
+  const myInput = document.createElement("input");
+  myInput.setAttribute("type", "text");
+  myInput.setAttribute("placeholder", "Value " + i);
+  myInput.classList.add("box");
+  myInput.setAttribute("name", "name" + (i + 1));
+  myInput.value = "Value " + i;
+  myForm.append(myInput);
+}
+myForm.append(btn);
+output.append(output1);
+btn.classList.add("box");
 
-window.addEventListener("DOMContentLoaded", loadData);
+btn.addEventListener("click", getPost);
 
-function loadData() {
-  const param = `users?page=${app.pg}`;
-  const url = baseUrl + param;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      buildPage(data);
-    });
+function loadData(e) {
+  e.preventDefault();
+  console.log("ready");
+  let formData = new FormData(myForm);
+  let data = [...formData.entries()];
+  console.log(data);
+  const params = data
+    .map((x) => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`)
+    .join("&");
+  console.log(params);
+  let url = baseUrl + "?" + params;
+  getData(url);
 }
 
-function buildPage(data) {
-  output.innerHTML = "";
-  data.data.forEach((user) => {
-    const userBox = addUser(user);
-    userBox.addEventListener("click", userPage.bind(user.id));
+function getPost(e) {
+  e.preventDefault();
+  const headers = new Headers();
+  let formData = new FormData(myForm);
+  let body = {};
+  formData.forEach((val, key) => {
+    body[key] = val;
   });
-  const containerEl = makeNode(output, "div");
-  containerEl.classList.add("navigation");
-  for (let i = 0; i < data.total_pages; i++) {
-    const spanEl = makeNode(containerEl, "span", i + 1);
-    spanEl.classList.add("indicator");
-    spanEl.addEventListener("click", (e) => {
-      app.pg = i + 1;
-      loadData();
-    });
-  }
-}
+  console.log(body);
 
-function makeNode(parent, nodeType, content = "") {
-  const el = document.createElement(nodeType);
-  el.innerHTML = content;
-  return parent.appendChild(el);
-}
-
-function userPage() {
-  const param = `users/${this}`;
-  const url = baseUrl + param;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      createPage(data.data);
-    });
-}
-
-function addUser(user) {
-  const userBox = makeNode(output, "div");
-  userBox.classList.add("user-box");
-  const userName = `${user.first_name} ${user.last_name}`;
-  const userEl = makeNode(userBox, "div", userName);
-  userEl.classList.add("userName");
-  userEl.dataset.userId = user.id;
-  const emailEl = makeNode(userBox, "div", user.email);
-  emailEl.classList.add("email");
-  const avatarEl = makeNode(userBox, "img");
-  avatarEl.setAttribute("src", user.avatar);
-
-  return userBox;
-}
-
-function createPage(data) {
-  output.innerHTML = "";
-  const main = addUser(data);
-  main.setAttribute("contenteditable", true);
-  const updateBtn = makeNode(main, "button", "update");
-  updateBtn.classList.add("updateBtn");
-  updateBtn.addEventListener("click", (e) => {
-    const userNameEl = document.querySelector(".userName");
-    const user = {
-      name: userNameEl.textContent,
-      email: document.querySelector(".email").textContent,
-      id: userNameEl.dataset.userId,
-    };
-    updateUser(user);
-  });
-}
-
-function updateUser(user) {
-  console.log(user);
-  const param = `users/${user.id}`;
-  const url = baseUrl + param;
-  console.log(url);
-  const headers = {
-    "Content-Type": "application/json",
-  };
-  const data = {
-    name: user.name,
-    email: user.email,
-  };
-
-  fetch(url, {
-    method: "PUT",
+  const options = {
+    method: "POST",
     headers,
-    body: JSON.stringify(data),
-  })
+    body: JSON.stringify(body),
+  };
+  fetch(baseUrl, options)
+    .then((res) => res.json())
+    .then((data) => outputObj(data));
+}
+
+function getData(url) {
+  fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      outputObj(data);
     });
+}
+
+function outputObj(obj) {
+  console.log(obj);
+  output1.innerHTML = "";
+  for (const prop in obj) {
+    output1.innerHTML += `${prop} : ${obj[prop]}<br>`;
+  }
 }
