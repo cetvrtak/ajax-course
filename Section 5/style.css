@@ -4,16 +4,9 @@
   box-sizing: border-box;
 }
 .box {
-  display: block;
   width: 80%;
-  margin: 10px auto;
-  font-size: 1.2em;
-}
-.main {
-  display: block;
-  width: 80%;
-  margin: 10px auto;
-  font-size: 0.8em;
   border: 1px solid #ddd;
+  margin: 10px auto;
   padding: 10px;
+  font-size: 1.2em;
 }
