@@ -15,3 +15,7 @@
 - Practice using POST and PUT method requests to server
 - Constructing new FormData from myForm
 - Creating a fake endpoint on GitHub
+
+### Section 6
+
+- Using POST method to add data to a locally served db
