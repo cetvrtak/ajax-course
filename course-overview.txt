@@ -19,3 +19,8 @@
 ### Section 6
 
 - Using POST method to add data to a locally served db
+
+### Section 7
+
+- Create HTMLFormControllsCollection
+- Send an email message from contact form - the coolest thing ever
