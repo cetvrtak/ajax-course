@@ -24,3 +24,7 @@
 
 - Create HTMLFormControllsCollection
 - Send an email message from contact form - the coolest thing ever
+
+### Section 8
+
+- Encode/decode strings using btoa() and atob()
