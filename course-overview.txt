@@ -1,30 +1,15 @@
-### Section 1
+JavaScript Dynamic Web Pages AJAX 30 Projects APIs JSON
 
-- Create .json file
+- Course overview:
 
-### [SKIPPED] Section 2 & 3
+The focus of this course is the application of HTTP methods. While most of the lectures have been merely a practice with different APIs to give the student some experience with possible situations and errors that could come up while connecting to these APIs, there were several very useful points like:
+- constructing new FormData from a DOM form
+- using POST method to add data to a database on a local server
+- creating HTMLFormControllsCollection
+- creating a fake endpoint on GitHub
+- connecting to YouTube API
+- encoding/decoding strings using btoa() and atob()
+- creating and working with .json file
 
-- Multiple projects practicing fetching JSON data and displaying in the DOM
-
-### Section 4
-
-- YouTube API
-
-### Section 5
-
-- Practice using POST and PUT method requests to server
-- Constructing new FormData from myForm
-- Creating a fake endpoint on GitHub
-
-### Section 6
-
-- Using POST method to add data to a locally served db
-
-### Section 7
-
-- Create HTMLFormControllsCollection
-- Send an email message from contact form - the coolest thing ever
-
-### Section 8
-
-- Encode/decode strings using btoa() and atob()
+And my personal favorite:
+- sending an email message directly from a contact form
